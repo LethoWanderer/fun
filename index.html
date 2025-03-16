@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Cat Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #cat {
+            font-size: 100px;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cat dance animation */
+        @keyframes catDance {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(20deg);
+            }
+            50% {
+                transform: rotate(-20deg);
+            }
+            75% {
+                transform: rotate(10deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Dance effect on hover */
+        #cat:hover {
+            animation: catDance 0.5s ease infinite;
+            transform: scale(1.3);
+        }
+
+        /* Making the cat jump when clicked */
+        #cat.clicked {
+            animation: catJump 1s ease;
+        }
+
+        @keyframes catJump {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cat">😸</div>
+
+    <script>
+        const cat = document.getElementById('cat');
+
+        // Make the cat "jump" every time it's clicked
+        cat.addEventListener('click', function() {
+            cat.classList.add('clicked');
+
+            // Remove the class after the jump animation finishes
+            setTimeout(function() {
+                cat.classList.remove('clicked');
+            }, 1000); // 1 second for the jump animation
+        });
+    </script>
+
+</body>
+</html>
+
